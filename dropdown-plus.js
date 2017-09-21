@@ -161,7 +161,7 @@ input:hover {
     },
     selectedIndex: { notify: true },
     selectedItem: { notify: true },
-    attrForSelected: { value: "label", notify: true },
+    attributeForSelected: { value: "label", notify: true },
     items: {
       type: Array,
       value: [
