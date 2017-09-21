@@ -2,6 +2,7 @@ import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 import '../@polymer/iron-flex-layout/iron-flex-layout.js';
 import '../@polymer/iron-icons/iron-icons.js';
 import '../@polymer/iron-icon/iron-icon.js';
+import '../@polymer/paper-input/paper-input.js';
 Polymer({
   _template: `
 <style>
@@ -104,17 +105,17 @@ input:hover {
 </style>
 <div class="dropdown">
   <div class="inputContainer">
-  <div class="title">[[label]]</div>
   <div class="iconHolder">
     <div class="inputField">
-  <input id="input" on-focus="_openDropdown" value="[[labelValue]]" placeholder="select" on-focusout="_closeDropdown">
+    <paper-input id="input" on-focus="_openDropdown" value="[[labelValue]]" placeholder="[[placeholder]]" label=[[label]] on-focusout="_closeDropdown">
+    <iron-icon icon="[[getIcon(opened)]]" slot="suffix"></iron-icon>
+    </paper-input>
     <div class="dropdown-content" id="dropdown">
       <template is="dom-repeat" items="[[items]]">
         <div on-tap="_selectItem">[[item.label]]</div>
       </template>
     </div>
     </div>
-    <iron-icon icon="[[getIcon(opened)]]"></iron-icon>
   </div>
 
   </div>
