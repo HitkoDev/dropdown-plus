@@ -1,0 +1,12 @@
+{
+  "name": "dropdown-plus",
+  "version": "3.0.0",
+  "main": "dropdown-plus.html",
+  "dependencies": {
+    "@polymer/iron-flex-layout": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

@@ -1,16 +1,9 @@
-
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
-
-<!--
-`dropdown-plus`
-
-
-@demo demo/index.html
--->
-<dom-module id="dropdown-plus">
-  <template>
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
+import '../@polymer/iron-flex-layout/iron-flex-layout.js';
+import '../@polymer/iron-icons/iron-icons.js';
+import '../@polymer/iron-icon/iron-icon.js';
+Polymer({
+  _template: `
 <style>
 :host {
 
@@ -126,53 +119,55 @@ input:hover {
 
   </div>
 </div>
-</template>
-<script>
-    Polymer({
-      getIcon:function() {
-        return this.opened ?  "arrow-drop-up" :"arrow-drop-down"
-      },
-      _selectItem:function(e) {
-        e.stopPropagation();
-        this.set("selectedItem",e.model.item);
-        this.$.input.value=this.selectedItem.label;
-        this.set("selected",e.model.item[this.attributeForSelected])
-        this.set("selectedIndex",e.model.index)
-        this.fire("selected",e.model.item)
-      },
-      _openDropdown:function(e) {
-        this.toggleAttribute("active",true,this.$.dropdown);
-        this.set("opened",true)
-      },
-      _closeDropdown:function(e) {
-        this.debounce("out",function() {
-          this._toggleDropdown();
-        }.bind(this),200)
+`,
 
-      },
-      _toggleDropdown:function(){
-          this.toggleAttribute("active",false,this.$.dropdown);
-          this.set("opened",false)
-      },
-      is: 'dropdown-plus',
+  getIcon: function () {
+    return this.opened ? "arrow-drop-up" : "arrow-drop-down"
+  },
 
-      properties: {
-        labelValue:{value:""},
-        opened:{value:false},
-        label:{
-          value:"Data"
-        },
-        selectedIndex:{notify:true},
-        selectedItem:{notify:true},
-        attrForSelected:{value:"label",notify:true},
-        items: {
-          type: Array,
-          value: [
-            {"label":"data3plot","giorno":3},
-            {"label":"Test2"},
-            {"label":"Test3"}],
-        },
-      }
-    });
-  </script>
-</dom-module>
+  _selectItem: function (e) {
+    e.stopPropagation();
+    this.set("selectedItem", e.model.item);
+    this.$.input.value = this.selectedItem.label;
+    this.set("selected", e.model.item[this.attributeForSelected])
+    this.set("selectedIndex", e.model.index)
+    this.fire("selected", e.model.item)
+  },
+
+  _openDropdown: function (e) {
+    this.toggleAttribute("active", true, this.$.dropdown);
+    this.set("opened", true)
+  },
+
+  _closeDropdown: function (e) {
+    this.debounce("out", function () {
+      this._toggleDropdown();
+    }.bind(this), 200)
+
+  },
+
+  _toggleDropdown: function () {
+    this.toggleAttribute("active", false, this.$.dropdown);
+    this.set("opened", false)
+  },
+
+  is: 'dropdown-plus',
+
+  properties: {
+    labelValue: { value: "" },
+    opened: { value: false },
+    label: {
+      value: "Data"
+    },
+    selectedIndex: { notify: true },
+    selectedItem: { notify: true },
+    attrForSelected: { value: "label", notify: true },
+    items: {
+      type: Array,
+      value: [
+        { "label": "data3plot", "giorno": 3 },
+        { "label": "Test2" },
+        { "label": "Test3" }],
+    },
+  }
+});
